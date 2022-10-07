@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row" style="margin-bottom: 20px;">
+    <div class="col" *ngFor="let item of fruitList">
+      <div class="card" style="width: 18rem; margin-top: 20px;">
+        <img src={{item.img}} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p>Price - {{item.price}}/ kg</p>
+          <p class="card-text">{{item.des}}</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
