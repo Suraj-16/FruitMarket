@@ -9,8 +9,10 @@ import { LoginPageComponent } from './Components/login-page/login-page.component
 import { RegistrationPageComponent } from './Components/registration-page/registration-page.component';
 import { CartComponent } from './Components/cart/cart.component';
 import { OrderDetailsComponent } from './Components/order-details/order-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AddFruitComponent } from './Components/add-fruit/add-fruit.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,15 @@ import { AppRoutingModule } from './app-routing.module';
     LoginPageComponent,
     RegistrationPageComponent,
     CartComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    AddFruitComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

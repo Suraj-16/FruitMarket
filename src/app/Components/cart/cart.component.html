@@ -1,1 +1,20 @@
-<p>cart works!</p>
+
+ <div class="row" style="margin-bottom: 20px;">
+  <div class="col" *ngFor="let item of cartItemList">
+    <div class="card" style="width: 18rem; margin-top: 20px;">
+      <img src={{item.fruitimg}} class="card-img-top" alt="..." style="height: 12rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{item.fruitname}}</h5>
+
+        <p *ngIf="item.fruitname == 'Banana'">Price - {{item.fruitprice}}/ Dozen</p>
+        <p *ngIf="item.fruitname != 'Banana'">Price - {{item.fruitprice}}/ kg</p>
+        <p class="card-text">Qty - {{item.qty}}</p>
+        <!-- <button type="button" (click)="addToCart( item.fruitid, 1)" class="btn btn-primary">Add to Cart</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  Total Price - {{totalPrice}}
+  <Button class="btn btn-warning">Place Order</Button>
+</div>
