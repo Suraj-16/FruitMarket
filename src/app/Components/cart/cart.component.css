@@ -1,0 +1,41 @@
+#total{
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  height: 50px;
+  text-align: right;
+}
+
+#card-img{
+  height: 10rem;
+}
+
+#cardbody{
+  width: 300px;
+  background-color: rgb(236, 235, 235);
+  margin: auto;
+}
+
+
+.qty{
+  padding: 2px 5px 2px 5px;
+  margin-bottom: 0;
+  font-size: x-small;
+}
+
+span{
+  font-size: small;
+}
+
+.qty-div{
+  width: 80px;
+}
+
+#empty-msg{
+  color: red;
+}
+
+.alert-div{
+  margin: 50px auto 50px auto;
+  width: 70%;
+}

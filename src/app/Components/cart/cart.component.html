@@ -1,20 +1,45 @@
 
- <div class="row" style="margin-bottom: 20px;">
-  <div class="col" *ngFor="let item of cartItemList">
-    <div class="card" style="width: 18rem; margin-top: 20px;">
-      <img src={{item.fruitimg}} class="card-img-top" alt="..." style="height: 12rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{item.fruitname}}</h5>
-
-        <p *ngIf="item.fruitname == 'Banana'">Price - {{item.fruitprice}}/ Dozen</p>
-        <p *ngIf="item.fruitname != 'Banana'">Price - {{item.fruitprice}}/ kg</p>
-        <p class="card-text">Qty - {{item.qty}}</p>
-        <!-- <button type="button" (click)="addToCart( item.fruitid, 1)" class="btn btn-primary">Add to Cart</button> -->
+  <div class="mt-3" *ngIf="cartItemList.length">
+    <div id="total">
+      <b style="padding-right: 10px;">{{totalPrice | currency : 'INR'}}</b>
+      <button type="button" mat-raised-button color="accent" (click)="placeOrder()">Place Order</button>
+    </div>
+    <hr style="margin: 10px 0 10px 0;">
+    <div class="row">
+      <div class="col mt-3 mb-2" *ngFor="let item of cartItemList">
+        <mat-card id="cardbody" class="example-card">
+          <img mat-card-image id="card-img" src={{item.fruitimg}} alt= {{item.fruitname}}>
+          <mat-card-content>
+            <mat-card-title>{{item.fruitname}}</mat-card-title>
+            <p *ngIf="item.fruitname == 'Banana'">{{item.fruitprice | currency : 'INR'}}/Dozen</p>
+            <p *ngIf="item.fruitname != 'Banana'">{{item.fruitprice | currency : 'INR'}}/Kg</p>
+            <div class="input-group input-group-sm qty-div">
+              <p class="input-group-text qty" id="inputGroup-sizing-sm">QTY</p>
+              <p class="form-control qty">{{item.qty}}</p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <span>{{item.fruitprice * item.qty | currency : 'INR'}}</span>
+            <button mat-raised-button color="warn" (click)="removeFromCart(item.cartid)"><mat-icon aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon></button>
+          </mat-card-actions>
+        </mat-card>
       </div>
     </div>
   </div>
+
+<div *ngIf="!cartItemList.length">
+
+  <div class="alert alert-danger d-flex align-items-center alert-div" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    <div>
+      <h5 style="margin-bottom: 0;">Your Cart Is Currently Empty!</h5>
+      <p style="margin-bottom: 0;">Please refer home page to add fruits to your cart.</p>
+    </div>
+  </div>
+
 </div>
-<div>
-  Total Price - {{totalPrice}}
-  <Button class="btn btn-warning">Place Order</Button>
-</div>
+
+
+

@@ -4,6 +4,7 @@ import { cartDetail } from 'src/app/Models/cartDetail';
 import { fruitDetail } from 'src/app/Models/fruitDetail';
 import { CartdetailsService } from 'src/app/Services/cartdetails.service';
 import { FruitdetailsService } from 'src/app/Services/fruitdetails.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-home-page',
@@ -27,30 +28,48 @@ export class HomePageComponent implements OnInit {
   // ];
 
   fruitList : fruitDetail[] = [];
+  test: any = ''
 
-  constructor(private _service : FruitdetailsService, private _service2 : CartdetailsService, private router : Router) { }
+  constructor(private _service : FruitdetailsService, private _service2 : CartdetailsService, private router : Router, private toast : NgToastService) { }
+
+  quantity = 1;
 
   cartItem : cartDetail = {
     fruitid : 0,
     userid : 0,
     qty : 0,
-    isRemoved : true
+    isremoved : true
   }
+
   ngOnInit(): void {
     this._service.getFruitDetails().subscribe(data => {
       this.fruitList = data;
     })
   }
 
-  addToCart(fruitid : Number, qty : Number){
-    this.cartItem.fruitid = fruitid;
-    this.cartItem.userid = Number(localStorage.getItem("userid"));
-    this.cartItem.qty = qty;
-    this.cartItem.isRemoved = false;
 
-    this._service2.addFruitToCart(this.cartItem).subscribe(data => {
-      console.log(data);
-    })
 
-  }
+  addToCart(fruitid : number){
+    if(localStorage.getItem("isLoggedIn") == "true"){
+      if(this.quantity >= 1){
+        this.cartItem.fruitid = fruitid;
+      this.cartItem.userid = Number(localStorage.getItem("userid"));
+      this.cartItem.qty = this.quantity;
+      this.cartItem.isremoved = false;
+
+      this._service2.addFruitToCart(this.cartItem).subscribe(
+        (res) => {
+        this.toast.success({detail:"Fruit Added to Cart", summary:"Success Message", duration: 2000});
+        this.quantity = 1;
+      },(error) => {
+        console.log(error);
+      })
+      }else{
+        this.toast.error({detail:"Quantity should be greater than 0", summary: "Error Message", duration: 2000});
+      }
+    }else{
+      this.router.navigate(['login']);
+    }
+    }
+
 }

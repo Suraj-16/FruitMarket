@@ -1,14 +1,47 @@
+<!--
+<div class="row">
+  <div id="alertdiv" class="alert alert-success alert-dismissible fade show col-10 col-lg-6 text-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    Fruit added to cart successfully!
+    <button id="alertbtn" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div> -->
 
-  <div class="row" style="margin-bottom: 20px;">
-    <div class="col" *ngFor="let item of fruitList">
-      <div class="card" style="width: 18rem; margin-top: 20px;">
-        <img src={{item.fruitimg}} class="card-img-top" alt="..." style="height: 12rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{item.fruitname}}</h5>
-          <p>Price - {{item.fruitprice}}/ kg</p>
-          <p class="card-text">{{item.fruitdes}}</p>
-          <button type="button" (click)="addToCart( item.fruitid, 1)" class="btn btn-primary">Add to Cart</button>
-        </div>
-      </div>
+<div class="row">
+  <div id="search-div" class="col-8">
+    <div class="input-group form-group my-3">
+      <input type="text" name="search" [(ngModel)]="test" class="form-control" placeholder="Search fruit by name..">
+      <span class="input-group-text"><mat-icon>search</mat-icon></span>
     </div>
   </div>
+</div>
+
+<div class="row">
+
+  <div class="col mt-3 mb-2" *ngFor="let item of fruitList | searchFruit: test">
+
+      <mat-card id="cardbody" class="example-card">
+        <img mat-card-image id="card-img" src={{item.fruitimg}} alt="Image of {{item.fruitname}}">
+        <mat-card-content>
+            <mat-card-title id="card-title">{{item.fruitname}}</mat-card-title>
+          <p *ngIf="item.fruitname == 'Banana'">{{item.fruitprice | currency : 'INR'}}/Dozen</p>
+          <p *ngIf="item.fruitname != 'Banana'">{{item.fruitprice | currency : 'INR'}}/Kg</p>
+          <!-- <div class="input-group input-group-sm">
+            <span class="input-group-text" id="inputGroup-sizing-sm">QTY</span>
+            <input type="number" [(ngModel)]="quantity" style="width: 50px; margin-left: 5px;">
+          </div> -->
+          <div class="input-group input-group-sm" style="width: 100px;">
+            <p class="input-group-text qty" id="inputGroup-sizing-sm">QTY</p>
+            <input type="number" class="form-control" [(ngModel)]="quantity">
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="addToCart(item.fruitid)">ADD <mat-icon aria-hidden="false" aria-label="Example shopping_cart icon" fontIcon="shopping_cart"></mat-icon> </button>
+        </mat-card-actions>
+      </mat-card>
+
+  </div>
+</div>
+

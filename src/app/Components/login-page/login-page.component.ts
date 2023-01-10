@@ -23,14 +23,11 @@ export class LoginPageComponent implements OnInit {
   onSubmit(){
     console.log(this.loginForm.value);
     this._service.loginUser(this.loginForm.value).subscribe(data => {
-      console.log(data);
       if(data){
         localStorage.setItem("userid", data.userid);
         localStorage.setItem("isLoggedIn", 'true');
         this.loginForm.reset();
-        this.router.navigate(['home']).then(() => {
-          window.location.reload()
-        })
+        this.router.navigate(['home']);
         console.log("login Working");
       }else{
         this.loginForm.reset();

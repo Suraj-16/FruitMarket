@@ -1,4 +1,4 @@
-<div class="card m-auto mt-5 mb-3" style="width: 400px;">
+ <div class="card m-auto mt-5 mb-3" style="width: 400px;">
   <div id="login_header" class="card-header">
     Login
   </div>
@@ -6,7 +6,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label class="form-label" for="email">email</label>
-        <input class="form-control" type="text" formControlName="email">
+        <input class="form-control" type="email" formControlName="email">
       </div>
       <div class="form-group">
         <label class="form-label" for="email">password</label>
@@ -18,3 +18,5 @@
     </form>
   </div>
 </div>
+
+

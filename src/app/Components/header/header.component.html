@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav id="navb" class="navbar navbar-expand-lg navbar-dark bg-dark  sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="">Fruit Market</a>
+    <a id="nav-brand" class="navbar-brand" routerLink="">Fruit Market</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,7 +15,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="orders">Orders</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn == 'false'">
+        <li class="nav-item" *ngIf="userid == '200'">
           <a class="nav-link" routerLink="add">Add Fruit</a>
         </li>
       </ul>
@@ -35,7 +35,7 @@
         <ul class="nav navbar-nav">
           <li class="nav-item" *ngIf="isLoggedIn == 'false'"><a class="nav-link" routerLink="register">Register</a></li>
           <li class="nav-item" *ngIf="isLoggedIn == 'false'"><a class="nav-link" routerLink="login">Login</a></li>
-          <li class="nav-item" *ngIf="isLoggedIn == 'true'"><button class="btn btn-outline-danger" (click)="onclick()">Logout</button></li>
+          <li class="nav-item" *ngIf="isLoggedIn == 'true'"><button class="btn btn-sm btn-outline-danger" (click)="onclick()">Logout</button></li>
         </ul>
       </div>
     </div>

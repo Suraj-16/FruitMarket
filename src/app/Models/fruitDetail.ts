@@ -1,7 +1,7 @@
 export interface fruitDetail{
- fruitid : Number,
+ fruitid : number,
  fruitname : string,
  fruitimg : string,
- fruitprice : Number,
+ fruitprice : number,
  fruitdes : string
 }

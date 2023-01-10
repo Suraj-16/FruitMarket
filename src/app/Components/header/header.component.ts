@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
    isLoggedIn = localStorage.getItem("isLoggedIn");
+   userid = localStorage.getItem("userid");
 
   constructor(private router : Router) { }
 

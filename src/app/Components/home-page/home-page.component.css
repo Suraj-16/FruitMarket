@@ -1,0 +1,51 @@
+/* style="height: 13rem; width: 18rem;" */
+
+#card-img{
+  height: 10rem;
+}
+
+#cardbody{
+  width: 300px;
+  background-color: rgb(236, 235, 235);
+  margin: auto;
+}
+
+#alertdiv{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+.text-center{
+  margin: auto;
+}
+
+.qty{
+  padding: 2px 5px 2px 5px;
+  margin-bottom: 0;
+  font-size: xx-small;
+}
+
+#alertbtn{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* #card-header{
+  background-color: #006D5B;
+}
+
+.example-card{
+  padding: 0;
+} */
+
+
+
+
+
+#search-div{
+  margin: 3px auto;
+}
+
+
+
